@@ -8,3 +8,8 @@ export interface Habit {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface CreateHabitDto {
+  name: string;
+  category: Category;
+}

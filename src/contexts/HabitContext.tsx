@@ -1,16 +1,11 @@
 import type { ReactNode } from "react";
 import { createContext, useContext } from "react";
-import type { CreateHabitDto } from "../components/habits/CreateHabitModal";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import type { Category, Habit } from "../types";
-
-type CreateHabitDtoWithCategory = Omit<CreateHabitDto, "categoryId"> & {
-  category: Category;
-};
+import type { CreateHabitDto, Habit } from "../types";
 
 interface HabitContextType {
   habits: Habit[];
-  addHabit: (dto: CreateHabitDtoWithCategory) => Habit;
+  addHabit: (dto: CreateHabitDto) => Habit;
   deleteHabit: (id: string) => void;
   toggleCompletion: (id: string, date?: Date) => void;
 }
@@ -20,7 +15,7 @@ const HabitContext = createContext<HabitContextType | undefined>(undefined);
 export function HabitProvider({ children }: { children: ReactNode }) {
   const [habits, setHabits] = useLocalStorage<Habit[]>("habits", []);
 
-  const addHabit = (dto: CreateHabitDtoWithCategory): Habit => {
+  const addHabit = (dto: CreateHabitDto): Habit => {
     const newHabit: Habit = {
       id: crypto.randomUUID(),
       name: dto.name,
