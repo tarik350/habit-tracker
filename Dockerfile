@@ -6,8 +6,12 @@ COPY . .
 RUN npm run build
 
 FROM nginx:alpine
+
+# Copy build output
 COPY --from=builder /app/build /usr/share/nginx/html
 COPY public/_redirects /usr/share/nginx/html/_redirects
+
+# Set up nginx configuration
 RUN echo 'server { \
     listen 80; \
     root /usr/share/nginx/html; \
@@ -16,11 +20,16 @@ RUN echo 'server { \
         try_files $uri $uri/ /index.html; \
     } \
 }' > /etc/nginx/conf.d/default.conf
-RUN adduser -D appuser \
-    && mkdir -p /var/cache/nginx/client_temp \
-    && chown -R appuser:appuser /var/cache/nginx \
+
+# Fix permission issues for nginx runtime folders
+RUN mkdir -p /run/nginx \
+    && mkdir -p /var/cache/nginx \
+    && chmod -R 777 /run/nginx \
+    && chmod -R 777 /var/cache/nginx \
+    && adduser -D appuser \
     && chown -R appuser:appuser /usr/share/nginx/html
 
 USER appuser
+
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
