@@ -1,15 +1,7 @@
-FROM node:20-alpine AS builder
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci
-COPY . .
-RUN npm run build
-
 FROM nginx:alpine
 COPY --from=builder /app/build /usr/share/nginx/html
 COPY public/_redirects /usr/share/nginx/html/_redirects
-RUN adduser -D appuser
-USER appuser
+
 RUN echo 'server { \
     listen 80; \
     root /usr/share/nginx/html; \
@@ -18,6 +10,9 @@ RUN echo 'server { \
         try_files $uri $uri/ /index.html; \
     } \
 }' > /etc/nginx/conf.d/default.conf
+
+RUN adduser -D appuser
+USER appuser
+
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
-
