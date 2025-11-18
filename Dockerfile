@@ -16,8 +16,11 @@ RUN echo 'server { \
         try_files $uri $uri/ /index.html; \
     } \
 }' > /etc/nginx/conf.d/default.conf
-RUN adduser -D appuser
+RUN adduser -D appuser \
+    && mkdir -p /var/cache/nginx/client_temp \
+    && chown -R appuser:appuser /var/cache/nginx \
+    && chown -R appuser:appuser /usr/share/nginx/html
+
 USER appuser
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
-
