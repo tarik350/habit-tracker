@@ -1,0 +1,56 @@
+{
+  "app": {
+    "name": "ልማድ መከታተያ",
+    "tagline": "መከታተል እና ማደግ"
+  },
+  "navigation": {
+    "dashboard": "ዳሽቦርድ",
+    "habits": "ልማዶች",
+    "categories": "ምድቦች"
+  },
+  "actions": {
+    "save": "አስቀምጥ",
+    "cancel": "ሰርዝ",
+    "delete": "ደምስስ",
+    "edit": "አስተካክል",
+    "create": "ፍጠር",
+    "close": "ዝጋ",
+    "signOut": "ውጣ",
+    "new": "አዲስ"
+  },
+  "time": {
+    "today": "ዛሬ",
+    "weekDays": {
+      "sun": "እሑድ",
+      "mon": "ሰኞ",
+      "tue": "ማክሰኞ",
+      "wed": "ረቡዕ",
+      "thu": "ሐሙስ",
+      "fri": "አርብ",
+      "sat": "ቅዳሜ"
+    },
+    "months": {
+      "jan": "ጥር",
+      "feb": "የካቲት",
+      "mar": "መጋቢት",
+      "apr": "ሚያዝያ",
+      "may": "ግንቦት",
+      "jun": "ሰኔ",
+      "jul": "ሐምሌ",
+      "aug": "ነሐሴ",
+      "sep": "መስከረም",
+      "oct": "ጥቅምት",
+      "nov": "ህዳር",
+      "dec": "ታህሳስ"
+    }
+  },
+  "status": {
+    "loading": "በመጫን ላይ...",
+    "saving": "በማስቀመጥ ላይ...",
+    "creating": "በመፍጠር ላይ...",
+    "deleting": "በመሰረዝ ላይ...",
+    "error": "ስህተት",
+    "success": "ተሳክቷል"
+  }
+}
+

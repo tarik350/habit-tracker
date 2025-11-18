@@ -1,5 +1,6 @@
 import clsx from "clsx";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FiInbox, FiPlus } from "react-icons/fi";
 import CategoryStreakChart from "../components/charts/CategoryStreakChart";
 import CategoryFilter from "../components/filters/CategoryFilter";
@@ -17,6 +18,7 @@ interface DateItem {
 }
 
 export default function DashboardPage() {
+  const { t, i18n } = useTranslation("dashboard");
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
@@ -43,7 +45,9 @@ export default function DashboardPage() {
       const date = new Date(today);
       date.setDate(today.getDate() - currentDay + i);
 
-      const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
+      const dayName = date.toLocaleDateString(i18n.language, {
+        weekday: "short",
+      });
       const dayNumber = date.getDate();
       const isToday = date.toDateString() === new Date().toDateString();
 
@@ -54,40 +58,44 @@ export default function DashboardPage() {
 
   const weekDates = generateWeekDates();
 
+  const handleComplete = useCallback(
+    (id: string) => toggleCompletion(id, selectedDate),
+    [toggleCompletion, selectedDate]
+  );
+
   return (
-    <div className=" space-y-6">
-      <div className="flex items-end justify-between">
+    <div className="space-y-4 md:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-(--color-text-primary) mb-1">
-            Hi, Welcome Back!
+          <h1 className="text-2xl md:text-3xl font-bold text-(--color-text-primary) mb-1">
+            {t("welcome")}
           </h1>
-          <p className="text-sm text-(--color-text-tertiary)">
-            Track your daily habits and build consistency
+          <p className="text-xs md:text-sm text-(--color-text-tertiary)">
+            {t("subtitle")}
           </p>
         </div>
         <button
           onClick={() => setIsCreateModalOpen(true)}
-          className="flex items-center gap-2 px-5 py-3 rounded-xl bg-(--color-accent) text-white font-semibold shadow-md hover:bg-(--color-accent-hover) transition-all duration-200"
+          className="flex items-center justify-center gap-2 px-4 md:px-5 py-2.5 md:py-3 rounded-xl bg-(--color-accent) text-white font-semibold shadow-md hover:bg-(--color-accent-hover) transition-all duration-200 text-sm md:text-base"
         >
-          <FiPlus size={20} />
-          New Habit
+          <FiPlus size={18} className="md:w-5 md:h-5" />
+          {t("newHabit")}
         </button>
       </div>
 
-      <div className="bg-(--color-bg-secondary) rounded-2xl p-3 shadow-sm border border-(--color-border)">
-        <h2 className="text-lg font-semibold text-(--color-text-primary) mb-4">
-          This Week
+      <div className="bg-(--color-bg-secondary) rounded-2xl p-3 md:p-4 shadow-sm border border-(--color-border)">
+        <h2 className="text-base md:text-lg font-semibold text-(--color-text-primary) mb-3 md:mb-4">
+          {t("thisWeek")}
         </h2>
-        <div className="flex gap-2">
+        <div className="flex gap-1.5 md:gap-2 overflow-x-auto pb-2 -mx-1 px-1">
           {weekDates.map((item, index) => (
             <button
               key={index}
               onClick={() => setSelectedDate(item.date)}
               className={clsx(
-                "flex flex-col items-center justify-center min-w-13 h-11 rounded-3xl px-2 py-1 ",
+                "flex flex-col items-center justify-center min-w-12 md:min-w-13 h-10 md:h-11 rounded-3xl px-1.5 md:px-2 py-1 shrink-0",
                 {
-                  "bg-(--color-accent) text-white shadow-lg shadow-purple-500/30 scale-105":
-                    item.isToday,
+                  "bg-(--color-accent) text-white  ": item.isToday,
                   "bg-(--color-bg-active) text-(--color-accent) border-2 border-(--color-accent)":
                     !item.isToday &&
                     selectedDate.toDateString() === item.date.toDateString(),
@@ -98,14 +106,14 @@ export default function DashboardPage() {
               )}
             >
               <span
-                className={`text-base font-semibold ${
+                className={`text-sm md:text-base font-semibold ${
                   item.isToday ? "text-white" : ""
                 }`}
               >
                 {item.dayNumber}
               </span>
               <span
-                className={`text-[9px] font-medium uppercase tracking-wide ${
+                className={`text-[8px] md:text-[9px] font-medium uppercase tracking-wide ${
                   item.isToday
                     ? "text-white opacity-90"
                     : "text-(--color-text-tertiary)"
@@ -124,38 +132,37 @@ export default function DashboardPage() {
             <FiInbox />
           </div>
           <h2 className="text-xl font-semibold text-(--color-text-primary)">
-            No habits yet
+            {t("empty.title")}
           </h2>
           <p className="text-(--color-text-tertiary) max-w-xs">
-            Start your journey by creating your first habit and begin tracking
-            your progress.
+            {t("empty.description")}
           </p>
           <button
             onClick={() => setIsCreateModalOpen(true)}
             className="px-5 py-3 rounded-xl bg-(--color-accent) text-white font-semibold shadow-md hover:bg-(--color-accent-hover) transition-all duration-200"
           >
-            Create Your First Habit
+            {t("empty.action")}
           </button>
         </div>
       )}
 
       {habits.length > 0 && (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-(--color-bg-secondary) rounded-2xl p-5 border border-(--color-border) hover:shadow-lg transition-all duration-300">
-              <h3 className="text-sm font-medium text-(--color-text-tertiary) mb-1">
-                Total Habits
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+            <div className="bg-(--color-bg-secondary) rounded-2xl p-4 md:p-5 border border-(--color-border) hover:shadow-lg transition-all duration-300">
+              <h3 className="text-xs md:text-sm font-medium text-(--color-text-tertiary) mb-1">
+                {t("totalHabits")}
               </h3>
-              <p className="text-3xl font-bold text-(--color-accent)">
+              <p className="text-2xl md:text-3xl font-bold text-(--color-accent)">
                 {habits.length}
               </p>
             </div>
 
-            <div className="bg-(--color-bg-secondary) rounded-2xl p-5 border border-(--color-border) hover:shadow-lg transition-all duration-300">
-              <h3 className="text-sm font-medium text-(--color-text-tertiary) mb-1">
-                Completed Today
+            <div className="bg-(--color-bg-secondary) rounded-2xl p-4 md:p-5 border border-(--color-border) hover:shadow-lg transition-all duration-300">
+              <h3 className="text-xs md:text-sm font-medium text-(--color-text-tertiary) mb-1">
+                {t("completedToday")}
               </h3>
-              <p className="text-3xl font-bold text-green-500">
+              <p className="text-2xl md:text-3xl font-bold text-green-500">
                 {
                   habits.filter((h) =>
                     h.completions.includes(selectedDate.toDateString())
@@ -165,38 +172,37 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="md:w-1/2">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-(--color-text-primary)">
-                  Your Habits
+          <div className="flex flex-col lg:flex-row gap-4 md:gap-6">
+            <div className="lg:w-1/2">
+              <div className="flex items-center justify-between mb-3 md:mb-4">
+                <h2 className="text-lg md:text-xl font-semibold text-(--color-text-primary)">
+                  {t("yourHabits")}
                 </h2>
-                <span className="text-sm text-(--color-text-tertiary)">
-                  {filteredHabits.length}{" "}
-                  {filteredHabits.length === 1 ? "habit" : "habits"}
+                <span className="text-xs md:text-sm text-(--color-text-tertiary)">
+                  {t("habitCount", { count: filteredHabits.length })}
                 </span>
               </div>
-              <div className="mb-4">
+              <div className="mb-3 md:mb-4">
                 <CategoryFilter
                   selectedCategoryId={selectedCategoryId}
                   onCategoryChange={setSelectedCategoryId}
                 />
               </div>
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-3 md:gap-4">
                 {filteredHabits.map((habit) => (
                   <HabitCard
                     key={habit.id}
                     habit={habit}
-                    onComplete={(id) => toggleCompletion(id, selectedDate)}
+                    onComplete={handleComplete}
                   />
                 ))}
               </div>
             </div>
-            <div className="flex flex-col  md:w-1/2 max-h-max">
-              <h2 className="text-xl font-semibold text-(--color-text-primary) mb-4">
-                Streak Progress by Category
+            <div className="flex flex-col lg:w-1/2">
+              <h2 className="text-lg md:text-xl font-semibold text-(--color-text-primary) mb-3 md:mb-4">
+                {t("streakProgress")}
               </h2>
-              <div className="bg-(--color-bg-secondary) rounded-2xl p-6">
+              <div className="bg-(--color-bg-secondary) rounded-2xl p-4 md:p-6">
                 <CategoryStreakChart habits={habits} />
               </div>
             </div>

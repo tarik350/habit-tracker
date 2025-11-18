@@ -1,0 +1,55 @@
+{
+  "app": {
+    "name": "Habit Tracker",
+    "tagline": "Track & Grow"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "habits": "Habits",
+    "categories": "Categories"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "close": "Close",
+    "signOut": "Sign Out",
+    "new": "New"
+  },
+  "time": {
+    "today": "Today",
+    "weekDays": {
+      "sun": "Sun",
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat"
+    },
+    "months": {
+      "jan": "Jan",
+      "feb": "Feb",
+      "mar": "Mar",
+      "apr": "Apr",
+      "may": "May",
+      "jun": "Jun",
+      "jul": "Jul",
+      "aug": "Aug",
+      "sep": "Sep",
+      "oct": "Oct",
+      "nov": "Nov",
+      "dec": "Dec"
+    }
+  },
+  "status": {
+    "loading": "Loading...",
+    "saving": "Saving...",
+    "creating": "Creating...",
+    "deleting": "Deleting...",
+    "error": "Error",
+    "success": "Success"
+  }
+}

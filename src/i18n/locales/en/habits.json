@@ -1,0 +1,31 @@
+{
+  "title": "My Habits",
+  "subtitle": "Manage and track your daily habits",
+  "newHabit": "New Habit",
+  "form": {
+    "createTitle": "Create New Habit",
+    "editTitle": "Edit Habit",
+    "habitName": "Habit Name",
+    "habitNamePlaceholder": "e.g., Morning Exercise",
+    "category": "Category",
+    "selectCategory": "Select a category",
+    "createButton": "Create Habit",
+    "creating": "Creating...",
+    "updateButton": "Update Habit",
+    "updating": "Updating..."
+  },
+  "card": {
+    "currentStreak": "Current Streak",
+    "created": "Created",
+    "markCompleted": "Mark as Completed",
+    "completedToday": "✓ Completed Today"
+  },
+  "empty": {
+    "title": "No habits yet",
+    "description": "Start your journey by creating your first habit and begin tracking your progress.",
+    "action": "Create Your First Habit",
+    "noInCategory": "No habits in this category",
+    "noInCategoryDescription": "Try selecting a different category or create a new habit"
+  }
+}
+

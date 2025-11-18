@@ -1,0 +1,30 @@
+{
+  "title": "የእኔ ልማዶች",
+  "subtitle": "የእለት ተእለት ልማዶችዎን ያስተዳድሩ እና ይከታተሉ",
+  "newHabit": "አዲስ ልማድ",
+  "form": {
+    "createTitle": "አዲስ ልማድ ፍጠር",
+    "editTitle": "ልማድ አስተካክል",
+    "habitName": "የልማድ ስም",
+    "habitNamePlaceholder": "ለምሳሌ፣ የጠዋት ስፖርት",
+    "category": "ምድብ",
+    "selectCategory": "ምድብ ይምረጡ",
+    "createButton": "ልማድ ፍጠር",
+    "creating": "በመፍጠር ላይ...",
+    "updateButton": "ልማድ አዘምን",
+    "updating": "በማዘመን ላይ..."
+  },
+  "card": {
+    "currentStreak": "የአሁን ተከታታይ",
+    "created": "የተፈጠረበት",
+    "markCompleted": "እንደተጠናቀቀ ምልክት አድርግ",
+    "completedToday": "✓ ዛሬ ተጠናቋል"
+  },
+  "empty": {
+    "title": "ገና ምንም ልማድ የለም",
+    "description": "የመጀመሪያውን ልማድዎን በመፍጠር ጉዞዎን ይጀምሩ እና እድገትዎን መከታተል ይጀምሩ።",
+    "action": "የመጀመሪያውን ልማድ ይፍጠሩ",
+    "noInCategory": "በዚህ ምድብ ውስጥ ምንም ልማድ የለም",
+    "noInCategoryDescription": "የተለየ ምድብ ለመምረጥ ይሞክሩ ወይም አዲስ ልማድ ይፍጠሩ"
+  }
+}

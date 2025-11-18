@@ -1,0 +1,17 @@
+{
+  "required": "ይህ መስክ ያስፈልጋል",
+  "habitName": {
+    "required": "የልማድ ስም ያስፈልጋል",
+    "tooLong": "ስም በጣም ረጅም ነው",
+    "minLength": "የልማድ ስም ቢያንስ {{min}} ፊደሎች መሆን አለበት",
+    "maxLength": "የልማድ ስም ከ {{max}} ፊደሎች በላይ መሆን የለበትም"
+  },
+  "category": {
+    "required": "እባክዎ ምድብ ይምረጡ",
+    "notFound": "ምድብ አልተገኘም"
+  },
+  "categoryName": {
+    "required": "የምድብ ስም ያስፈልጋል",
+    "tooLong": "ስም በጣም ረጅም ነው"
+  }
+}

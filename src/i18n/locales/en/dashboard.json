@@ -1,0 +1,18 @@
+{
+  "welcome": "Hi, Welcome Back!",
+  "subtitle": "Track your daily habits and build consistency",
+  "thisWeek": "This Week",
+  "totalHabits": "Total Habits",
+  "completedToday": "Completed Today",
+  "yourHabits": "Your Habits",
+  "streakProgress": "Streak Progress by Category",
+  "newHabit": "New Habit",
+  "habitCount_one": "{{count}} habit",
+  "habitCount_other": "{{count}} habits",
+  "empty": {
+    "title": "No habits yet",
+    "description": "Start your journey by creating your first habit and begin tracking your progress.",
+    "action": "Create Your First Habit"
+  }
+}
+

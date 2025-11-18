@@ -1,0 +1,18 @@
+{
+  "required": "This field is required",
+  "habitName": {
+    "required": "Habit name is required",
+    "tooLong": "Name too long",
+    "minLength": "Habit name must be at least {{min}} characters",
+    "maxLength": "Habit name must be at most {{max}} characters"
+  },
+  "category": {
+    "required": "Please select a category",
+    "notFound": "Category not found"
+  },
+  "categoryName": {
+    "required": "Category name is required",
+    "tooLong": "Name too long"
+  }
+}
+

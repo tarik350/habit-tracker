@@ -1,0 +1,15 @@
+{
+  "title": "Categories",
+  "subtitle": "Organize your habits by category",
+  "newCategory": "New Category",
+  "habitCount_one": "{{count}} habit",
+  "habitCount_other": "{{count}} habits",
+  "empty": {
+    "title": "No categories yet",
+    "description": "Create categories to organize your habits better."
+  },
+  "filter": {
+    "all": "All Categories",
+    "select": "Filter by category"
+  }
+}

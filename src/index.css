@@ -15,6 +15,9 @@
 
   --color-accent: #7c4efe;
   --color-accent-hover: #6a3edb;
+
+  --color-success: #22c55e;
+  --color-success-hover: #16a34a;
 }
 
 .dark {
@@ -32,6 +35,69 @@
 
   --color-accent: #8b5cff;
   --color-accent-hover: #9d73ff;
+
+  --color-success: #4ade80;
+  --color-success-hover: #22c55e;
+}
+
+.theme-ocean {
+  --color-bg-primary: #f0f7ff;
+  --color-bg-secondary: #e1efff;
+  --color-bg-tertiary: #cde7ff;
+  --color-bg-active: #b8dcff;
+
+  --color-text-primary: #1a365d;
+  --color-text-secondary: #2c5282;
+  --color-text-tertiary: #4a5568;
+
+  --color-border: #a0c4ff;
+  --color-border-light: #c1e0ff;
+
+  --color-accent: #0077b6;
+  --color-accent-hover: #005f8f;
+
+  --color-success: #00b4d8;
+  --color-success-hover: #0090ad;
+}
+
+.theme-sunset {
+  --color-bg-primary: #fff5f0;
+  --color-bg-secondary: #ffe4d6;
+  --color-bg-tertiary: #ffd1b3;
+  --color-bg-active: #ffbe99;
+
+  --color-text-primary: #7b341e;
+  --color-text-secondary: #a2462c;
+  --color-text-tertiary: #c05621;
+
+  --color-border: #fec89a;
+  --color-border-light: #ffd9b5;
+
+  --color-accent: #ff6b6b;
+  --color-accent-hover: #e35a5a;
+
+  --color-success: #ffa94d;
+  --color-success-hover: #f08a24;
+}
+
+.theme-forest {
+  --color-bg-primary: #f0f8f2;
+  --color-bg-secondary: #d8eedd;
+  --color-bg-tertiary: #c1e4c8;
+  --color-bg-active: #aadab4;
+
+  --color-text-primary: #22543d;
+  --color-text-secondary: #2f6a50;
+  --color-text-tertiary: #398765;
+
+  --color-border: #93d9a7;
+  --color-border-light: #b5e5c4;
+
+  --color-accent: #2f855a;
+  --color-accent-hover: #276749;
+
+  --color-success: #38a169;
+  --color-success-hover: #2f855a;
 }
 
 @keyframes fadeIn {

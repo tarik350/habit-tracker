@@ -1,0 +1,17 @@
+{
+  "welcome": "ሰላም፣ እንኳን እንደገና ደህና መጡ!",
+  "subtitle": "የዕለት ተዕለት ልማዶችዎን ይከታተሉ እና ወጥነት ይገንቡ",
+  "thisWeek": "በዚህ ሳምንት",
+  "totalHabits": "ጠቅላላ ልማዶች",
+  "completedToday": "ዛሬ የተጠናቀቁ",
+  "yourHabits": "የእርስዎ ልማዶች",
+  "streakProgress": "በልምድ የመቀጠል ሁኔታ",
+  "newHabit": "አዲስ ልማድ",
+  "habitCount_one": "{{count}} ልማድ",
+  "habitCount_other": "{{count}} ልማዶች",
+  "empty": {
+    "title": "ገና ምንም ልማድ የለም",
+    "description": "የመጀመሪያውን ልማድዎን በመፍጠር ጉዞዎን ይጀምሩ እና እድገትዎን መከታተል ይጀምሩ።",
+    "action": "የመጀመሪያውን ልማድ ይፍጠሩ"
+  }
+}

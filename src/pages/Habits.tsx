@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { useHabits } from "../contexts/HabitContext";
 import { FiInbox, FiPlus } from "react-icons/fi";
 import CreateHabitModal from "../components/habits/CreateHabitModal";
@@ -6,6 +7,7 @@ import HabitCard from "../components/habits/HabitCard";
 import CategoryFilter from "../components/filters/CategoryFilter";
 
 export default function HabitPage() {
+  const { t } = useTranslation("habits");
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
     null
@@ -22,10 +24,10 @@ export default function HabitPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-(--color-text-primary) mb-1">
-            My Habits
+            {t("title")}
           </h1>
           <p className="text-sm text-(--color-text-tertiary)">
-            Manage and track your daily habits
+            {t("subtitle")}
           </p>
         </div>
         <button
@@ -33,7 +35,7 @@ export default function HabitPage() {
           className="flex items-center gap-2 px-5 py-3 rounded-xl bg-(--color-accent) text-white font-semibold shadow-md hover:bg-(--color-accent-hover) transition-all duration-200"
         >
           <FiPlus size={20} />
-          New Habit
+          {t("newHabit")}
         </button>
       </div>
 
@@ -43,17 +45,16 @@ export default function HabitPage() {
             <FiInbox />
           </div>
           <h2 className="text-xl font-semibold text-(--color-text-primary)">
-            No habits yet
+            {t("empty.title")}
           </h2>
           <p className="text-(--color-text-tertiary) max-w-xs">
-            Start your journey by creating your first habit and begin tracking
-            your progress.
+            {t("empty.description")}
           </p>
           <button
             onClick={() => setIsCreateModalOpen(true)}
             className="px-5 py-3 rounded-xl bg-(--color-accent) text-white font-semibold shadow-md hover:bg-(--color-accent-hover) transition-all duration-200"
           >
-            Create Your First Habit
+            {t("empty.action")}
           </button>
         </div>
       ) : (
@@ -70,10 +71,10 @@ export default function HabitPage() {
                 <FiInbox />
               </div>
               <h3 className="text-lg font-semibold text-(--color-text-primary)">
-                No habits in this category
+                {t("empty.noInCategory")}
               </h3>
               <p className="text-sm text-(--color-text-tertiary)">
-                Try selecting a different category or create a new habit
+                {t("empty.noInCategoryDescription")}
               </p>
             </div>
           ) : (

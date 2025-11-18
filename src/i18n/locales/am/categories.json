@@ -1,0 +1,15 @@
+{
+  "title": "ምድቦች",
+  "subtitle": "ልማዶችዎን በምድብ ያደራጁ",
+  "newCategory": "አዲስ ምድብ",
+  "habitCount_one": "{{count}} ልማድ",
+  "habitCount_other": "{{count}} ልማዶች",
+  "empty": {
+    "title": "ገና ምንም ምድብ የለም",
+    "description": "ልማዶችዎን በተሻለ ለማደራጀት ምድቦችን ይፍጠሩ።"
+  },
+  "filter": {
+    "all": "ሁሉም ምድቦች",
+    "select": "በምድብ አጣራ"
+  }
+}

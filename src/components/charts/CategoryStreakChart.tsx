@@ -1,16 +1,15 @@
 import {
-  BarChart,
   Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Cell,
 } from "recharts";
-import type { Habit } from "../../types";
 import { useCategories } from "../../contexts/CategoryContext";
-import { useEffect } from "react";
+import type { Habit } from "../../types";
 
 interface CategoryStreakChartProps {
   habits: Habit[];
@@ -26,9 +25,6 @@ export default function CategoryStreakChart({
   habits,
 }: CategoryStreakChartProps) {
   const { categories } = useCategories();
-  useEffect(() => {
-    console.log(categories);
-  }, [categories]);
 
   const chartData: ChartData[] = categories
     .map((category) => {
