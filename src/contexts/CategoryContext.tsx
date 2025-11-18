@@ -6,6 +6,7 @@ import type { Category, CreateCategoryDto } from "../types";
 interface CategoryContextType {
   categories: Category[];
   addCategory: (dto: CreateCategoryDto) => Category;
+  deleteCategory: (id: string) => void;
 }
 
 const CategoryContext = createContext<CategoryContextType | undefined>(
@@ -32,8 +33,14 @@ export function CategoryProvider({ children }: { children: ReactNode }) {
     return newCategory;
   };
 
+  const deleteCategory = (id: string): void => {
+    setCategories((prev) => prev.filter((cat) => cat.id !== id));
+  };
+
   return (
-    <CategoryContext.Provider value={{ categories, addCategory }}>
+    <CategoryContext.Provider
+      value={{ categories, addCategory, deleteCategory }}
+    >
       {children}
     </CategoryContext.Provider>
   );

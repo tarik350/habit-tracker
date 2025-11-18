@@ -4,6 +4,10 @@
   "newCategory": "New Category",
   "habitCount_one": "{{count}} habit",
   "habitCount_other": "{{count}} habits",
+  "deleteTitle": "Delete Category",
+  "deleteConfirm": "Delete this category? All associated habits will be deleted.",
+  "deleteButton": "Delete",
+  "cancelButton": "Cancel",
   "empty": {
     "title": "No categories yet",
     "description": "Create categories to organize your habits better."
@@ -11,5 +15,12 @@
   "filter": {
     "all": "All Categories",
     "select": "Filter by category"
+  },
+  "form": {
+    "createTitle": "Create New Category",
+    "name": "Category Name",
+    "color": "Color",
+    "description": "Description",
+    "createButton": "Create Category"
   }
 }

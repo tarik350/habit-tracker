@@ -1,12 +1,30 @@
-import { FiInbox, FiPlus } from "react-icons/fi";
+import { useState } from "react";
+import { FiInbox, FiPlus, FiTrash2 } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
 import { useCategories } from "../contexts/CategoryContext";
 import { useHabits } from "../contexts/HabitContext";
+import CreateCategoryModal from "../components/categories/CreateCategoryModal";
+import ConfirmModal from "../components/common/ConfirmModal";
 import type { Category } from "../types";
 
 export default function CategoriesPage() {
   const { t } = useTranslation("categories");
-  const { categories } = useCategories();
+  const { categories, deleteCategory } = useCategories();
+  const { deleteHabitsByCategoryId } = useHabits();
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [deleteCategoryId, setDeleteCategoryId] = useState<string | null>(null);
+
+  const handleDelete = (categoryId: string) => {
+    setDeleteCategoryId(categoryId);
+  };
+
+  const confirmDelete = () => {
+    if (deleteCategoryId) {
+      deleteHabitsByCategoryId(deleteCategoryId);
+      deleteCategory(deleteCategoryId);
+      setDeleteCategoryId(null);
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -19,7 +37,10 @@ export default function CategoriesPage() {
             {t("subtitle")}
           </p>
         </div>
-        <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-(--color-accent) text-white font-semibold shadow-md hover:bg-(--color-accent-hover) transition-all duration-200">
+        <button
+          onClick={() => setIsCreateModalOpen(true)}
+          className="flex items-center gap-2 px-5 py-3 rounded-xl bg-(--color-accent) text-white font-semibold shadow-md hover:bg-(--color-accent-hover) transition-all duration-200"
+        >
           <FiPlus size={20} />
           {t("newCategory")}
         </button>
@@ -39,42 +60,66 @@ export default function CategoriesPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {categories.map((category) => {
-            return <CategoryCard category={category} />;
-          })}
+          {categories.map((category) => (
+            <CategoryCard
+              key={category.id}
+              category={category}
+              onDelete={handleDelete}
+            />
+          ))}
         </div>
       )}
+
+      <CreateCategoryModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+      />
+
+      <ConfirmModal
+        isOpen={deleteCategoryId !== null}
+        onClose={() => setDeleteCategoryId(null)}
+        onConfirm={confirmDelete}
+        title={t("deleteTitle")}
+        message={t("deleteConfirm")}
+        confirmText={t("deleteButton")}
+        cancelText={t("cancelButton")}
+      />
     </div>
   );
 }
 
-const CategoryCard = ({ category }: { category: Category }) => {
+const CategoryCard = ({
+  category,
+  onDelete,
+}: {
+  category: Category;
+  onDelete: (id: string) => void;
+}) => {
   const { t } = useTranslation("categories");
   const { habits } = useHabits();
-  const getCategoryHabitCount = (categoryId: string): number => {
-    return habits.filter((h) => h.category.id === categoryId).length;
-  };
-  const habitCount = getCategoryHabitCount(category.id);
+  const habitCount = habits.filter((h) => h.category.id === category.id).length;
 
   return (
     <div
-      key={category.id}
-      className="bg-(--color-bg-secondary) rounded-2xl p-6 border border-(--color-border) hover:shadow-lg transition-all duration-300 cursor-pointer"
-      style={{
-        borderLeft: `4px solid ${category.color}`,
-      }}
+      className="bg-(--color-bg-secondary) rounded-2xl p-6 border border-(--color-border) hover:shadow-lg transition-all duration-300"
+      style={{ borderLeft: `4px solid ${category.color}` }}
     >
       <div className="flex items-start justify-between mb-3">
-        <div className="flex items-center gap-3">
-          <div>
-            <h3 className="text-lg font-semibold text-(--color-text-primary)">
-              {category.name}
-            </h3>
-            <p className="text-xs text-(--color-text-tertiary)">
-              {t("habitCount", { count: habitCount })}
-            </p>
-          </div>
+        <div className="flex-1">
+          <h3 className="text-lg font-semibold text-(--color-text-primary)">
+            {category.name}
+          </h3>
+          <p className="text-xs text-(--color-text-tertiary)">
+            {t("habitCount", { count: habitCount })}
+          </p>
         </div>
+        <button
+          onClick={() => onDelete(category.id)}
+          className="p-2 rounded-lg hover:bg-(--color-bg-tertiary) text-red-500 transition-colors"
+          aria-label="Delete category"
+        >
+          <FiTrash2 size={18} />
+        </button>
       </div>
       {category.description && (
         <p className="text-sm text-(--color-text-tertiary) mt-2">

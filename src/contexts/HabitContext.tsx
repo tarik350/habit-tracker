@@ -7,6 +7,7 @@ interface HabitContextType {
   habits: Habit[];
   addHabit: (dto: CreateHabitDto) => Habit;
   deleteHabit: (id: string) => void;
+  deleteHabitsByCategoryId: (categoryId: string) => void;
   toggleCompletion: (id: string, date?: Date) => void;
 }
 
@@ -33,6 +34,12 @@ export function HabitProvider({ children }: { children: ReactNode }) {
     setHabits((prev) => prev.filter((habit) => habit.id !== id));
   };
 
+  const deleteHabitsByCategoryId = (categoryId: string): void => {
+    setHabits((prev) =>
+      prev.filter((habit) => habit.category.id !== categoryId)
+    );
+  };
+
   const toggleCompletion = (id: string, date: Date = new Date()): void => {
     setHabits((prev) =>
       prev.map((habit) => {
@@ -54,7 +61,13 @@ export function HabitProvider({ children }: { children: ReactNode }) {
 
   return (
     <HabitContext.Provider
-      value={{ habits, addHabit, deleteHabit, toggleCompletion }}
+      value={{
+        habits,
+        addHabit,
+        deleteHabit,
+        deleteHabitsByCategoryId,
+        toggleCompletion,
+      }}
     >
       {children}
     </HabitContext.Provider>

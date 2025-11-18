@@ -4,6 +4,10 @@
   "newCategory": "አዲስ ምድብ",
   "habitCount_one": "{{count}} ልማድ",
   "habitCount_other": "{{count}} ልማዶች",
+  "deleteTitle": "ምድብ ሰርዝ",
+  "deleteConfirm": "ይህን ምድብ ይሰርዙ? ሁሉም የተያያዙ ልማዶች ይሰረዛሉ።",
+  "deleteButton": "ሰርዝ",
+  "cancelButton": "አትሰርዝ",
   "empty": {
     "title": "ገና ምንም ምድብ የለም",
     "description": "ልማዶችዎን በተሻለ ለማደራጀት ምድቦችን ይፍጠሩ።"
@@ -11,5 +15,12 @@
   "filter": {
     "all": "ሁሉም ምድቦች",
     "select": "በምድብ አጣራ"
+  },
+  "form": {
+    "createTitle": "አዲስ ምድብ ፍጠር",
+    "name": "የምድብ ስም",
+    "color": "ቀለም",
+    "description": "መግለጫ",
+    "createButton": "ምድብ ፍጠር"
   }
 }
