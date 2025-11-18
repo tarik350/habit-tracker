@@ -42,9 +42,11 @@ export default function Sidebar({ isOpen = false, onClose }: SidebarProps) {
       >
         <div className="flex items-center justify-between px-3">
           <div className="flex items-center gap-3">
-            <div className="h-11 w-11 bg-linear-to-br from-[#7c4efe] to-[#9d73ff] text-white text-base font-bold rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/20">
-              HT
-            </div>
+            <img
+              src="/logo.jpg"
+              alt="Kefya Habits"
+              className="h-11 w-11 rounded-xl object-cover shadow-lg"
+            />
             <div className="flex flex-col">
               <h2 className="text-base font-bold text-(--color-text-primary) leading-tight">
                 {t("app.name")}

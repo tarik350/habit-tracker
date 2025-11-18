@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import type { ReactNode } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import type { Category, CreateCategoryDto } from "../types";
 
@@ -21,7 +22,7 @@ export function CategoryProvider({ children }: { children: ReactNode }) {
 
   const addCategory = (dto: CreateCategoryDto): Category => {
     const newCategory: Category = {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       name: dto.name,
       color: dto.color,
       description: dto.description,

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { createContext, useContext } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import type { CreateHabitDto, Habit } from "../types";
 
@@ -18,7 +19,7 @@ export function HabitProvider({ children }: { children: ReactNode }) {
 
   const addHabit = (dto: CreateHabitDto): Habit => {
     const newHabit: Habit = {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       name: dto.name,
       category: dto.category,
       completions: [],
