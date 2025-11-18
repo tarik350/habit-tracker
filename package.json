@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "lint": "eslint . --ext .tsx,.ts --fix",
+    "type-check": "tsc --noEmit",
+    "preview": "vite preview",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -38,6 +40,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "husky": "^9.1.7",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.3",
     "vite": "^7.2.2"
