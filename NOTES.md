@@ -1,8 +1,13 @@
 # Design & Development Notes
 
+## How to Run the App
+
+1. Run `npm install` to install dependencies
+2. Start the app using `npm run dev`
+
 ## Design Choices
 
-### Layout
+### Layouta
 
 - **Dashboard Layout**: Sidebar navigation with main content area for clear hierarchy and quick access
 - **Responsive Design**: Mobile-first with drawer sidebar on small screens, fixed sidebar on desktop
